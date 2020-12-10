@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/fragmentWelcome">
+
+    <fragment
+        android:id="@+id/fragmentWelcome"
+        android:name="com.example.asystentnayczyciela.View.FragmentWelcome"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_fragmentWelcome_to_framgentChooseStudent"
+            app:destination="@id/framgentChooseStudent" />
+        <action
+            android:id="@+id/action_fragmentWelcome_to_fragmentChooseTeacher"
+            app:destination="@id/fragmentChooseTeacher" />
+    </fragment>
+    <fragment
+        android:id="@+id/framgentChooseStudent"
+        android:name="com.example.asystentnayczyciela.View.FramgentChooseStudent"
+        android:label="framgent_choose_student"
+        tools:layout="@layout/framgent_choose_student" >
+        <action
+            android:id="@+id/action_framgentChooseStudent_to_fragmentWelcome"
+            app:destination="@id/fragmentWelcome" />
+        <action
+            android:id="@+id/action_framgentChooseStudent_to_fragmentAddStudent"
+            app:destination="@id/fragmentAddStudent" />
+        <action
+            android:id="@+id/action_framgentChooseStudent_to_fragmentEditStudent"
+            app:destination="@id/fragmentEditStudent" />
+        <action
+            android:id="@+id/action_framgentChooseStudent_to_fragmentDeleteStudent"
+            app:destination="@id/fragmentDeleteStudent" />
+        <action
+            android:id="@+id/action_framgentChooseStudent_to_fragmentChoosenStudent"
+            app:destination="@id/fragmentChoosenStudent" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChooseTeacher"
+        android:name="com.example.asystentnayczyciela.View.FragmentChooseTeacher"
+        android:label="fragment_choose_teacher"
+        tools:layout="@layout/fragment_choose_teacher" >
+        <action
+            android:id="@+id/action_fragmentChooseTeacher_to_fragmentWelcome"
+            app:destination="@id/fragmentWelcome" />
+        <action
+            android:id="@+id/action_fragmentChooseTeacher_to_choosenTeacher"
+            app:destination="@id/choosenTeacher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddStudent"
+        android:name="com.example.asystentnayczyciela.View.FragmentAddStudent"
+        android:label="fragment_add_student"
+        tools:layout="@layout/fragment_add_student" >
+        <action
+            android:id="@+id/action_fragmentAddStudent_to_framgentChooseStudent"
+            app:destination="@id/framgentChooseStudent" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEditStudent"
+        android:name="com.example.asystentnayczyciela.View.FragmentEditStudent"
+        android:label="fragment_edit_student"
+        tools:layout="@layout/fragment_edit_student" >
+        <action
+            android:id="@+id/action_fragmentEditStudent_to_framgentChooseStudent"
+            app:destination="@id/framgentChooseStudent" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDeleteStudent"
+        android:name="com.example.asystentnayczyciela.View.FragmentDeleteStudent"
+        android:label="fragment_delete_student"
+        tools:layout="@layout/fragment_delete_student" >
+        <action
+            android:id="@+id/action_fragmentDeleteStudent_to_framgentChooseStudent"
+            app:destination="@id/framgentChooseStudent" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChoosenStudent"
+        android:name="com.example.asystentnayczyciela.View.FragmentChoosenStudent"
+        android:label="fragment_choosen_student"
+        tools:layout="@layout/fragment_choosen_student" >
+        <action
+            android:id="@+id/action_fragmentChoosenStudent_to_framgentChooseStudent"
+            app:destination="@id/framgentChooseStudent" />
+    </fragment>
+    <fragment
+        android:id="@+id/choosenTeacher"
+        android:name="com.example.asystentnayczyciela.View.ChoosenTeacher"
+        android:label="fragment_choosen_teacher"
+        tools:layout="@layout/fragment_choosen_teacher" >
+        <action
+            android:id="@+id/action_choosenTeacher_to_fragmentChooseTeacher"
+            app:destination="@id/fragmentChooseTeacher" />
+    </fragment>
+</navigation>
