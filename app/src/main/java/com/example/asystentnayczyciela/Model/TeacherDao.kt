@@ -14,5 +14,5 @@ interface TeacherDao {
     suspend fun delete(teacher: Teacher)
 
     @Query("select * from teacher_table")
-    fun allTeachers(): LiveData<List<Teacher>>
+    fun allTeachers(): LiveData<MutableList<Teacher>>
 }

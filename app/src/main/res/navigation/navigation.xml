@@ -49,6 +49,15 @@
         <action
             android:id="@+id/action_fragmentChooseTeacher_to_choosenTeacher"
             app:destination="@id/choosenTeacher" />
+        <action
+            android:id="@+id/action_fragmentChooseTeacher_to_fragmentAddTeacher"
+            app:destination="@id/fragmentAddTeacher" />
+        <action
+            android:id="@+id/action_fragmentChooseTeacher_to_fragmentEditTeacher"
+            app:destination="@id/fragmentEditTeacher" />
+        <action
+            android:id="@+id/action_fragmentChooseTeacher_to_fragmentDeleteTeacher"
+            app:destination="@id/fragmentDeleteTeacher" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddStudent"
@@ -93,6 +102,33 @@
         tools:layout="@layout/fragment_choosen_teacher" >
         <action
             android:id="@+id/action_choosenTeacher_to_fragmentChooseTeacher"
+            app:destination="@id/fragmentChooseTeacher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddTeacher"
+        android:name="com.example.asystentnayczyciela.View.FragmentAddTeacher"
+        android:label="fragment_add_teacher"
+        tools:layout="@layout/fragment_add_teacher" >
+        <action
+            android:id="@+id/action_fragmentAddTeacher_to_fragmentChooseTeacher"
+            app:destination="@id/fragmentChooseTeacher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEditTeacher"
+        android:name="com.example.asystentnayczyciela.View.FragmentEditTeacher"
+        android:label="fragment_edit_teacher"
+        tools:layout="@layout/fragment_edit_teacher" >
+        <action
+            android:id="@+id/action_fragmentEditTeacher_to_fragmentChooseTeacher"
+            app:destination="@id/fragmentChooseTeacher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDeleteTeacher"
+        android:name="com.example.asystentnayczyciela.View.FragmentDeleteTeacher"
+        android:label="fragment_delete_teacher"
+        tools:layout="@layout/fragment_delete_teacher" >
+        <action
+            android:id="@+id/action_fragmentDeleteTeacher_to_fragmentChooseTeacher"
             app:destination="@id/fragmentChooseTeacher" />
     </fragment>
 </navigation>

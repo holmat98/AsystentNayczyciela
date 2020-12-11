@@ -17,5 +17,5 @@ interface CourseDao {
     suspend fun delete(course: Course)
 
     @Query("select * from course_table")
-    fun AllCourses() : LiveData<List<Course>>
+    fun AllCourses() : LiveData<MutableList<Course>>
 }

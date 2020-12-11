@@ -15,5 +15,5 @@ interface GradesDao {
     suspend fun insert(grade: Grades)
 
     @Query("select * from grades_table")
-    fun allGrades() : LiveData<List<Grades>>
+    fun allGrades() : LiveData<MutableList<Grades>>
 }

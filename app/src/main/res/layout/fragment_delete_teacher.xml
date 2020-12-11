@@ -4,40 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".View.FragmentChoosenStudent">
+    tools:context=".View.FragmentDeleteTeacher">
 
     <TextView
-        android:id="@+id/witajSTV"
+        android:id="@+id/deleteTeacherTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wybrany Student"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:text="Usun nauczyciela"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/studentsGradesBtn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/deleteTSpinner"
         />
 
-
-    <Button
-        android:id="@+id/studentsGradesBtn"
+    <Spinner
+        android:id="@+id/deleteTSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/witajSTV"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/studentsCoursesBtn"
-        android:text="@string/yoursGrades"
+        app:layout_constraintTop_toBottomOf="@id/deleteTeacherTv"
+        app:layout_constraintBottom_toTopOf="@id/deleteTeacherButton2"
         />
 
     <Button
-        android:id="@+id/studentsCoursesBtn"
+        android:id="@+id/deleteTeacherButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/studentsGradesBtn"
+        android:text="@string/delete"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/deleteTSpinner"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="@string/yoursCourses"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

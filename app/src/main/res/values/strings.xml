@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">AsystentNayczyciela</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="welcome">Pomocnik nauczyciela</string>
     <string name="student">Student</string>
     <string name="nauczyciel">Nauczyciel</string>
@@ -13,4 +11,6 @@
     <string name="wybierzNauczyciela">Wybierz nauczyciela</string>
     <string name="studentLastName">Nazwisko</string>
     <string name="studentName">Imię</string>
+    <string name="yoursGrades">Twoje oceny</string>
+    <string name="yoursCourses">Twoje kursy</string>
 </resources>

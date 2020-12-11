@@ -16,5 +16,5 @@ interface ParticipantDao {
     suspend fun delete(participant: Participant)
 
     @Query("select * from participant_table")
-    fun allParticipants() : LiveData<List<Participant>>
+    fun allParticipants() : LiveData<MutableList<Participant>>
 }
