@@ -9,9 +9,9 @@ import androidx.room.PrimaryKey
     ForeignKey(
         entity = Teacher::class,
         parentColumns = ["id"],
-        childColumns = ["teacher"],
+        childColumns = ["idTeacher"],
         onDelete = CASCADE
     )
 ])
-class Course(@PrimaryKey(autoGenerate = true) val id: Int, var name: String, val teacher: Int) {
+data class Course(@PrimaryKey(autoGenerate = true)val id: Int, val idTeacher: Int, var name: String) {
 }

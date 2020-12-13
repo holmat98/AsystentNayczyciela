@@ -7,13 +7,13 @@ import androidx.room.Insert
 import androidx.room.Query
 
 @Dao
-interface GradesDao {
-    @Delete
-    suspend fun delelte(grade: Grades)
-
+interface GradeDao {
     @Insert
-    suspend fun insert(grade: Grades)
+    suspend fun insert(grade: Grade)
 
-    @Query("select * from grades_table")
-    fun allGrades() : LiveData<MutableList<Grades>>
+    @Delete
+    suspend fun delete(grade: Grade)
+
+    @Query("select * from grade_table")
+    fun allGrades(): LiveData<MutableList<Grade>>
 }

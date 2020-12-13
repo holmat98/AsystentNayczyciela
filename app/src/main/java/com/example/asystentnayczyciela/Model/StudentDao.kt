@@ -14,4 +14,7 @@ interface StudentDao {
 
     @Query("select * from student_table")
     fun allStudents() : LiveData<MutableList<Student>>
+
+    @Query("update student_table set name = :newName, lastName = :newLastName where id = :idStudent")
+    fun editStudent(newName: String, newLastName: String, idStudent: Int)
 }
