@@ -56,6 +56,8 @@ class FragmentAddStudent : Fragment() {
             if(!"".equals(name) && !"".equals(lastName))
             {
                 viewModel.addStudent(name, lastName)
+                newStudentName.text.clear()
+                newStudentLastName.text.clear()
             }
         }
 

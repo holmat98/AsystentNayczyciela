@@ -11,11 +11,16 @@ import android.widget.Spinner
 import android.widget.SpinnerAdapter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.asystentnayczyciela.Model.Student
 import com.example.asystentnayczyciela.R
+import com.example.asystentnayczyciela.ViewModel.AdapterStudents
 import com.example.asystentnayczyciela.ViewModel.StudentViewModel
 import kotlinx.android.synthetic.main.framgent_choose_student.*
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,10 +37,11 @@ class FramgentChooseStudent : Fragment(){
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var adapter: ArrayAdapter<String>
 
-    val types = arrayOf("1", "2")
     private lateinit var viewModel: StudentViewModel
+    private lateinit var myAdapter: AdapterStudents
+    private lateinit var myLayoutManager: LinearLayoutManager
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,29 +56,23 @@ class FramgentChooseStudent : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        myLayoutManager = LinearLayoutManager(context)
         viewModel = ViewModelProvider(requireActivity()).get(StudentViewModel::class.java)
+        myAdapter = AdapterStudents(viewModel.students)
 
-        adapter = context?.let {
-            ArrayAdapter(
-                it,
-                android.R.layout.simple_spinner_item,
-                types
-            )
-        }!!
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        viewModel.students.observe(viewLifecycleOwner, androidx.lifecycle.Observer { myAdapter.notifyDataSetChanged() })
 
         return inflater.inflate(R.layout.framgent_choose_student, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        choosenStudentButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_framgentChooseStudent_to_fragmentChoosenStudent)}
         addStudentButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_framgentChooseStudent_to_fragmentAddStudent)}
-        editStudentButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_framgentChooseStudent_to_fragmentEditStudent)}
-        deleteStudentButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_framgentChooseStudent_to_fragmentDeleteStudent)}
 
-        studentsSpinner.adapter = adapter
-        studentsSpinner.setSelection(0, false)
+        recyclerView = studentRecyclerView.apply {
+            this.layoutManager = myLayoutManager
+            this.adapter = myAdapter
+        }
     }
 
     companion object {

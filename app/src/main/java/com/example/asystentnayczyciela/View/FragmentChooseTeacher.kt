@@ -44,8 +44,6 @@ class FragmentChooseTeacher : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         choosenTeacherButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_fragmentChooseTeacher_to_choosenTeacher)}
         addTeacherButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_fragmentChooseTeacher_to_fragmentAddTeacher)}
-        editTeacherButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_fragmentChooseTeacher_to_fragmentAddTeacher)}
-        deleteTeacherButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_fragmentChooseTeacher_to_fragmentDeleteTeacher)}
     }
 
     companion object {

@@ -5,7 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import com.example.asystentnayczyciela.Model.DataSource
 import com.example.asystentnayczyciela.R
+import com.example.asystentnayczyciela.ViewModel.StudentViewModel
+import kotlinx.android.synthetic.main.fragment_add_student.*
+import kotlinx.android.synthetic.main.fragment_choosen_student.*
+import kotlinx.android.synthetic.main.fragment_edit_student.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +28,8 @@ class FragmentEditStudent : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    lateinit var viewModel: StudentViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +43,32 @@ class FragmentEditStudent : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+        viewModel = ViewModelProvider(requireActivity()).get(StudentViewModel::class.java)
+
         return inflater.inflate(R.layout.fragment_edit_student, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        newStudentName2.setText(viewModel.students.value?.get(DataSource.choosenStudentIndex)?.name)
+        newStudentLastName2.setText(viewModel.students.value?.get(DataSource.choosenStudentIndex)?.lastName)
+
+        editStudentButton.setOnClickListener{
+            var newName: String = newStudentName.getText().toString()
+            var newLastName: String = newStudentLastName2.getText().toString()
+
+            if(!newName.equals(viewModel.students.value?.get(DataSource.choosenStudentIndex)?.name) && !"".equals(newName)
+                &&
+                !newLastName.equals(viewModel.students.value?.get(DataSource.choosenStudentIndex)?.lastName) && !"".equals(newLastName)
+            ){
+                viewModel.students.value?.get(DataSource.choosenStudentIndex)?.id?.let { it1 ->
+                    viewModel.editStudent(newName, newLastName,
+                        it1
+                    )
+                }
+            }
+        }
     }
 
     companion object {

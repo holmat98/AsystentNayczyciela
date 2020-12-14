@@ -14,16 +14,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/editSSpinner"
-        />
-
-    <Spinner
-        android:id="@+id/editSSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editStudentTV"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/textView3"
         />
 
@@ -31,7 +21,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/editSSpinner"
+        app:layout_constraintTop_toBottomOf="@id/editStudentTV"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/newStudentName2"
         app:layout_constraintBottom_toTopOf="@id/textView4"
@@ -44,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        app:layout_constraintTop_toBottomOf="@id/editSSpinner"
+        app:layout_constraintTop_toBottomOf="@id/editStudentTV"
         app:layout_constraintLeft_toRightOf="@id/textView3"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/newStudentLastName2"

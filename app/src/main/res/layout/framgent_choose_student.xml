@@ -14,28 +14,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/studentsSpinner"
+        app:layout_constraintBottom_toTopOf="@id/studentRecyclerView"
         />
 
-    <Spinner
-        android:id="@+id/studentsSpinner"
-        android:layout_width="wrap_content"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/studentRecyclerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chooseStudentTextView"
-        app:layout_constraintBottom_toTopOf="@id/choosenStudentButton"
-        />
-
-    <Button
-        android:id="@+id/choosenStudentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/wybierz"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/studentsSpinner"
-        app:layout_constraintBottom_toTopOf="@id/editStudentButton"
+        app:layout_constraintBottom_toTopOf="@id/addStudentButton"
         />
 
     <Button
@@ -44,30 +33,8 @@
         android:layout_height="wrap_content"
         android:text="@string/add"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/editStudentButton"
-        app:layout_constraintTop_toBottomOf="@id/choosenStudentButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <Button
-        android:id="@+id/editStudentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit"
-        app:layout_constraintLeft_toRightOf="@id/addStudentButton"
-        app:layout_constraintRight_toLeftOf="@id/deleteStudentButton"
-        app:layout_constraintTop_toBottomOf="@id/choosenStudentButton"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <Button
-        android:id="@+id/deleteStudentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/delete"
-        app:layout_constraintLeft_toRightOf="@id/editStudentButton"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/choosenStudentButton"
+        app:layout_constraintTop_toBottomOf="@id/studentRecyclerView"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
