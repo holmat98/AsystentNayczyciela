@@ -5,9 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.asystentnayczyciela.R
+import com.example.asystentnayczyciela.ViewModel.AdapterStudents
+import com.example.asystentnayczyciela.ViewModel.AdapterTeachers
+import com.example.asystentnayczyciela.ViewModel.StudentViewModel
+import com.example.asystentnayczyciela.ViewModel.TeacherViewModel
 import kotlinx.android.synthetic.main.fragment_choose_teacher.*
+import kotlinx.android.synthetic.main.framgent_choose_student.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +32,11 @@ class FragmentChooseTeacher : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var viewModel: TeacherViewModel
+    private lateinit var myAdapter: AdapterTeachers
+    private lateinit var myLayoutManager: LinearLayoutManager
+    private lateinit var recyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,13 +50,23 @@ class FragmentChooseTeacher : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+        myLayoutManager = LinearLayoutManager(context)
+        viewModel = ViewModelProvider(requireActivity()).get(TeacherViewModel::class.java)
+        myAdapter = AdapterTeachers(viewModel.teachers)
+
+        viewModel.teachers.observe(viewLifecycleOwner, androidx.lifecycle.Observer { myAdapter.notifyDataSetChanged() })
         return inflater.inflate(R.layout.fragment_choose_teacher, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        choosenTeacherButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_fragmentChooseTeacher_to_choosenTeacher)}
         addTeacherButton.setOnClickListener{view -> view.findNavController().navigate(R.id.action_fragmentChooseTeacher_to_fragmentAddTeacher)}
+
+        recyclerView = teacherRecyclerVIew.apply {
+            this.layoutManager = myLayoutManager
+            this.adapter = myAdapter
+        }
     }
 
     companion object {

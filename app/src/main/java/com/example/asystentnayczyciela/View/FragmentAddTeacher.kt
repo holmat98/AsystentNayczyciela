@@ -5,7 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
 import com.example.asystentnayczyciela.R
+import com.example.asystentnayczyciela.ViewModel.TeacherViewModel
+import kotlinx.android.synthetic.main.fragment_add_student.*
+import kotlinx.android.synthetic.main.fragment_add_teacher.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +26,8 @@ class FragmentAddTeacher : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    lateinit var viewModel: TeacherViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +41,27 @@ class FragmentAddTeacher : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+        viewModel = ViewModelProvider(requireActivity()).get(TeacherViewModel::class.java)
+
         return inflater.inflate(R.layout.fragment_add_teacher, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        addTeacherButton.setOnClickListener{
+            var name: String = newTeacherName.getText().toString()
+            var lastName: String = newTeacherLastName.getText().toString()
+
+            if(!"".equals(name) && !"".equals(lastName))
+            {
+                viewModel.addTeacher(name, lastName)
+                newTeacherName.text.clear()
+                newTeacherLastName.text.clear()
+            }
+        }
+
     }
 
     companion object {

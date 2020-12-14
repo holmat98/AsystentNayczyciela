@@ -22,16 +22,18 @@ class AdapterStudents(var studentList: LiveData<MutableList<Student>>): Recycler
     }
 
     override fun onBindViewHolder(holder: StudentHolder, position: Int) {
+        var textViewIndex= holder.itemView.findViewById<TextView>(R.id.studentIndex)
         var textViewFirstName= holder.itemView.findViewById<TextView>(R.id.studentNameOR)
         var textViewLastName= holder.itemView.findViewById<TextView>(R.id.studentLastNameOR)
         var buttonSV = holder.itemView.findViewById<Button>(R.id.goToStudentView)
 
+        textViewIndex.text = studentList.value?.get(position)?.id.toString()
         textViewFirstName.text=studentList.value?.get(position)?.name
         textViewLastName.text=studentList.value?.get(position)?.lastName
 
         buttonSV.setOnClickListener{
             view -> view.findNavController().navigate(R.id.action_framgentChooseStudent_to_fragmentChoosenStudent)
-            DataSource.choosenStudentIndex = position
+            DataSource.chosenStudentIndex = position
         }
     }
 

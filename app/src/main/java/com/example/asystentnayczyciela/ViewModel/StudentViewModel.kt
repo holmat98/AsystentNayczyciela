@@ -32,9 +32,9 @@ class StudentViewModel(application: Application):AndroidViewModel(application) {
         }
     }
 
-    fun editStudent(newName: String, newLastnName: String, idStudent: Int) {
+    fun editStudent(newName: String, newLastName: String, idStudent: Int) {
         viewModelScope.launch {
-            studentRepository.editStudent(newName, newLastnName, idStudent)
+            studentRepository.editStudent(newName = newName,newLastName = newLastName,idStudent = idStudent)
         }
     }
 }

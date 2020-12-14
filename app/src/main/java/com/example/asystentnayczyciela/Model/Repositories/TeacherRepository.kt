@@ -14,5 +14,5 @@ class TeacherRepository(val teacherDao: TeacherDao) {
 
     suspend fun delete(teacher: Teacher)=teacherDao.delete(teacher)
 
-    fun editStudent(newName: String, newLastName: String, idTeacher: Int)=teacherDao.editTeacher(newName, newLastName, idTeacher)
+    fun editTeacher(newName: String, newLastName: String, idTeacher: Int)=teacherDao.editTeacher(newName, newLastName, idTeacher)
 }

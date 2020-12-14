@@ -4,32 +4,33 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/studentIndex"
+        android:id="@+id/teacherIndex"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         />
 
     <TextView
-        android:id="@+id/studentNameOR"
+        android:id="@+id/teacherNameOR"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="4"
         />
 
     <TextView
-        android:id="@+id/studentLastNameOR"
+        android:id="@+id/teacherLastNameOR"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="4"
         />
 
     <Button
-        android:id="@+id/goToStudentView"
+        android:id="@+id/goToTeacherView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
         android:text="Przejdź"
         />
+
 
 </LinearLayout>

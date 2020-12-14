@@ -1,13 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".View.ChoosenTeacher">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Wybrany nauczyciel" />
+        android:id="@+id/witajTTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/addCourseBtn"
+        />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/addCourseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dodaj kurs"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/witajTTV"
+        app:layout_constraintBottom_toTopOf="@id/TeachersCourses"
+        />
+
+    <Button
+        android:id="@+id/TeachersCourses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Twoje kursy"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addCourseBtn"
+        app:layout_constraintBottom_toTopOf="@id/GradesReport"
+        />
+
+    <Button
+        android:id="@+id/GradesReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Raport"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TeachersCourses"
+        app:layout_constraintBottom_toTopOf="@id/deleteTeacher"
+        />
+
+    <Button
+        android:id="@+id/deleteTeacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/GradesReport"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

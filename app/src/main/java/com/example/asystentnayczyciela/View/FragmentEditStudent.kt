@@ -10,7 +10,6 @@ import com.example.asystentnayczyciela.Model.DataSource
 import com.example.asystentnayczyciela.R
 import com.example.asystentnayczyciela.ViewModel.StudentViewModel
 import kotlinx.android.synthetic.main.fragment_add_student.*
-import kotlinx.android.synthetic.main.fragment_choosen_student.*
 import kotlinx.android.synthetic.main.fragment_edit_student.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -51,20 +50,23 @@ class FragmentEditStudent : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newStudentName2.setText(viewModel.students.value?.get(DataSource.choosenStudentIndex)?.name)
-        newStudentLastName2.setText(viewModel.students.value?.get(DataSource.choosenStudentIndex)?.lastName)
+        newStudentName2.setText(viewModel.students.value?.get(DataSource.chosenStudentIndex)?.name)
+        newStudentLastName2.setText(viewModel.students.value?.get(DataSource.chosenStudentIndex)?.lastName)
 
         editStudentButton.setOnClickListener{
             var newName: String = newStudentName.getText().toString()
             var newLastName: String = newStudentLastName2.getText().toString()
+            var id: Int? = viewModel.students.value?.get(DataSource.chosenStudentIndex)?.id
 
-            if(!newName.equals(viewModel.students.value?.get(DataSource.choosenStudentIndex)?.name) && !"".equals(newName)
+            if(!newName.equals(viewModel.students.value?.get(DataSource.chosenStudentIndex)?.name) && !"".equals(newName)
                 &&
-                !newLastName.equals(viewModel.students.value?.get(DataSource.choosenStudentIndex)?.lastName) && !"".equals(newLastName)
+                !newLastName.equals(viewModel.students.value?.get(DataSource.chosenStudentIndex)?.lastName) && !"".equals(newLastName)
             ){
-                viewModel.students.value?.get(DataSource.choosenStudentIndex)?.id?.let { it1 ->
-                    viewModel.editStudent(newName, newLastName,
-                        it1
+                if (id != null) {
+                    viewModel.editStudent(
+                        newName = newName,
+                        newLastName = newLastName,
+                        idStudent = id
                     )
                 }
             }
