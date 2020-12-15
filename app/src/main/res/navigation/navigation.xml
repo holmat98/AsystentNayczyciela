@@ -88,6 +88,12 @@
         <action
             android:id="@+id/action_choosenTeacher_to_fragmentEditTeacher"
             app:destination="@id/fragmentEditTeacher" />
+        <action
+            android:id="@+id/action_choosenTeacher_to_fragmentAddCourse"
+            app:destination="@id/fragmentAddCourse" />
+        <action
+            android:id="@+id/action_choosenTeacher_to_fragmentTeachersCourses"
+            app:destination="@id/fragmentTeachersCourses" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddTeacher"
@@ -105,6 +111,24 @@
         tools:layout="@layout/fragment_edit_teacher" >
         <action
             android:id="@+id/action_fragmentEditTeacher_to_choosenTeacher"
+            app:destination="@id/choosenTeacher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddCourse"
+        android:name="com.example.asystentnayczyciela.View.FragmentAddCourse"
+        android:label="fragment_add_course"
+        tools:layout="@layout/fragment_add_course" >
+        <action
+            android:id="@+id/action_fragmentAddCourse_to_choosenTeacher"
+            app:destination="@id/choosenTeacher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentTeachersCourses"
+        android:name="com.example.asystentnayczyciela.View.FragmentTeachersCourses"
+        android:label="fragment_teachers_courses"
+        tools:layout="@layout/fragment_teachers_courses" >
+        <action
+            android:id="@+id/action_fragmentTeachersCourses_to_choosenTeacher"
             app:destination="@id/choosenTeacher" />
     </fragment>
 </navigation>

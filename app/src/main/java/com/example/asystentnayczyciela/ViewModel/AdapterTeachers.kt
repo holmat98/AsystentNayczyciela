@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.asystentnayczyciela.Model.Course
 import com.example.asystentnayczyciela.Model.DataSource
 import com.example.asystentnayczyciela.Model.Teacher
 import com.example.asystentnayczyciela.R
@@ -34,6 +35,7 @@ class AdapterTeachers(var teacherList: LiveData<MutableList<Teacher>>): Recycler
         buttonSV.setOnClickListener{
             view -> view.findNavController().navigate(R.id.action_fragmentChooseTeacher_to_choosenTeacher)
             DataSource.chosenTeacherIndex = position
+            DataSource.chosenTeacherId = teacherList.value?.get(position)?.id ?: 0
         }
     }
 

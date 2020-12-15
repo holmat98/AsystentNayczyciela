@@ -10,12 +10,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystentnayczyciela.R
-import com.example.asystentnayczyciela.ViewModel.AdapterStudents
 import com.example.asystentnayczyciela.ViewModel.AdapterTeachers
-import com.example.asystentnayczyciela.ViewModel.StudentViewModel
 import com.example.asystentnayczyciela.ViewModel.TeacherViewModel
 import kotlinx.android.synthetic.main.fragment_choose_teacher.*
-import kotlinx.android.synthetic.main.framgent_choose_student.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
