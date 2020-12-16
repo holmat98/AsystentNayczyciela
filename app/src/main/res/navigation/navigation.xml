@@ -130,5 +130,29 @@
         <action
             android:id="@+id/action_fragmentTeachersCourses_to_choosenTeacher"
             app:destination="@id/choosenTeacher" />
+        <action
+            android:id="@+id/action_fragmentTeachersCourses_to_fragmentNotParticipants"
+            app:destination="@id/fragmentNotParticipants" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNotParticipants"
+        android:name="com.example.asystentnayczyciela.View.FragmentNotParticipants"
+        android:label="fragment_not_participants"
+        tools:layout="@layout/fragment_not_participants" >
+        <action
+            android:id="@+id/action_fragmentNotParticipants_to_fragmentTeachersCourses"
+            app:destination="@id/fragmentTeachersCourses" />
+        <action
+            android:id="@+id/action_fragmentNotParticipants_to_fragmentAddParticipant"
+            app:destination="@id/fragmentAddParticipant" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddParticipant"
+        android:name="com.example.asystentnayczyciela.View.FragmentAddParticipant"
+        android:label="fragment_add_participant"
+        tools:layout="@layout/fragment_add_participant" >
+        <action
+            android:id="@+id/action_fragmentAddParticipant_to_fragmentNotParticipants"
+            app:destination="@id/fragmentNotParticipants" />
     </fragment>
 </navigation>

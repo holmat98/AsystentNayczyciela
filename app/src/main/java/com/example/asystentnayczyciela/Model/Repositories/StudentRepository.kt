@@ -13,5 +13,9 @@ class StudentRepository(private val studentDao: StudentDao) {
 
     suspend fun delete(student:Student)=studentDao.delete(student)
 
+    fun getNotParticipants(courseId: Int) : LiveData<MutableList<Student>>{
+        return studentDao.getNotParticipants(courseId)
+    }
+
     fun editStudent(newName: String, newLastName: String, idStudent: Int)=studentDao.editStudent(newName, newLastName, idStudent)
 }

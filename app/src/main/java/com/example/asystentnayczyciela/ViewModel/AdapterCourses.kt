@@ -23,14 +23,22 @@ class AdapterCourses(var coursesList: LiveData<MutableList<Course>>): RecyclerVi
     }
 
     override fun onBindViewHolder(holder: CoursesHolder, position: Int) {
-        var idTV = holder.itemView.findViewById<TextView>(R.id.courseId)
-        var teacherIdTV = holder.itemView.findViewById<TextView>(R.id.teacherId)
         var nameTV = holder.itemView.findViewById<TextView>(R.id.courseNameTV)
-        //var button = holder.itemView.findViewById<Button>(R.id.goToParticipantsBtn)
+        var toParticipantsbutton = holder.itemView.findViewById<Button>(R.id.goToParticipantsBtn)
+        var addParticipantButton = holder.itemView.findViewById<Button>(R.id.goToAddParticipant)
+        var deleteCourse = holder.itemView.findViewById<Button>(R.id.deleteCourse)
 
-        idTV.text = coursesList.value?.get(position)?.id.toString()
-        teacherIdTV.text = coursesList.value?.get(position)?.idTeacher.toString()
         nameTV.text = coursesList.value?.get(position)?.name
+
+        addParticipantButton.setOnClickListener{
+            view -> view.findNavController().navigate(R.id.action_fragmentTeachersCourses_to_fragmentNotParticipants)
+            DataSource.chosenCourseId = coursesList.value?.get(position)?.id ?: 0
+        }
+
+        deleteCourse.setOnClickListener{
+            coursesList.value?.removeAt(position)
+            this.notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int {
