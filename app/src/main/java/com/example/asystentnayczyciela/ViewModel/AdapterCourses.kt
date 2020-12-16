@@ -30,6 +30,11 @@ class AdapterCourses(var coursesList: LiveData<MutableList<Course>>): RecyclerVi
 
         nameTV.text = coursesList.value?.get(position)?.name
 
+        toParticipantsbutton.setOnClickListener {
+            view -> view.findNavController().navigate(R.id.action_fragmentTeachersCourses_to_fragmentParticipants)
+            DataSource.chosenCourseId = coursesList.value?.get(position)?.id ?: 0
+        }
+
         addParticipantButton.setOnClickListener{
             view -> view.findNavController().navigate(R.id.action_fragmentTeachersCourses_to_fragmentNotParticipants)
             DataSource.chosenCourseId = coursesList.value?.get(position)?.id ?: 0

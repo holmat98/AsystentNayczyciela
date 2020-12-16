@@ -94,6 +94,9 @@
         <action
             android:id="@+id/action_choosenTeacher_to_fragmentTeachersCourses"
             app:destination="@id/fragmentTeachersCourses" />
+        <action
+            android:id="@+id/action_choosenTeacher_to_fragmentReport"
+            app:destination="@id/fragmentReport" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddTeacher"
@@ -133,6 +136,9 @@
         <action
             android:id="@+id/action_fragmentTeachersCourses_to_fragmentNotParticipants"
             app:destination="@id/fragmentNotParticipants" />
+        <action
+            android:id="@+id/action_fragmentTeachersCourses_to_fragmentParticipants"
+            app:destination="@id/fragmentParticipants" />
     </fragment>
     <fragment
         android:id="@+id/fragmentNotParticipants"
@@ -154,5 +160,35 @@
         <action
             android:id="@+id/action_fragmentAddParticipant_to_fragmentNotParticipants"
             app:destination="@id/fragmentNotParticipants" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentParticipants"
+        android:name="com.example.asystentnayczyciela.View.FragmentParticipants"
+        android:label="fragment_participants"
+        tools:layout="@layout/fragment_participants" >
+        <action
+            android:id="@+id/action_fragmentParticipants_to_fragmentTeachersCourses"
+            app:destination="@id/fragmentTeachersCourses" />
+        <action
+            android:id="@+id/action_fragmentParticipants_to_fragmentAddGrade"
+            app:destination="@id/fragmentAddGrade" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAddGrade"
+        android:name="com.example.asystentnayczyciela.View.FragmentAddGrade"
+        android:label="fragment_add_grade"
+        tools:layout="@layout/fragment_add_grade" >
+        <action
+            android:id="@+id/action_fragmentAddGrade_to_fragmentParticipants"
+            app:destination="@id/fragmentParticipants" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentReport"
+        android:name="com.example.asystentnayczyciela.View.FragmentReport"
+        android:label="fragment_report"
+        tools:layout="@layout/fragment_report" >
+        <action
+            android:id="@+id/action_fragmentReport_to_choosenTeacher"
+            app:destination="@id/choosenTeacher" />
     </fragment>
 </navigation>

@@ -13,5 +13,11 @@ class CourseRepository(val courseDao: CourseDao) {
         courseDao.insert(course)
     }
 
+    fun getTeachersCourses(teacherId: Int) : LiveData<MutableList<Course>>
+    {
+        return courseDao.teachersCourses(teacherId)
+    }
+
+
     suspend fun delete(course: Course)=courseDao.delete(course)
 }

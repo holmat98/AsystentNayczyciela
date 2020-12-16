@@ -56,7 +56,8 @@ class ChoosenTeacher : Fragment() {
 
         addCourseBtn.setOnClickListener{view -> view.findNavController().navigate(R.id.action_choosenTeacher_to_fragmentAddCourse)}
         TeachersCourses.setOnClickListener{view -> view.findNavController().navigate(R.id.action_choosenTeacher_to_fragmentTeachersCourses)}
-        
+        GradesReport.setOnClickListener { view -> view.findNavController().navigate(R.id.action_choosenTeacher_to_fragmentReport) }
+
         witajTTV.text = "Witaj " + viewModel.teachers.value?.get(com.example.asystentnayczyciela.Model.DataSource.chosenTeacherIndex)?.name + " " + viewModel.teachers.value?.get(com.example.asystentnayczyciela.Model.DataSource.chosenTeacherIndex)?.lastName
 
         deleteTeacher.setOnClickListener{

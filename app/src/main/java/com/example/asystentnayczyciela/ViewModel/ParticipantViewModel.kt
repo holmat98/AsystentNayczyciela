@@ -17,11 +17,13 @@ class ParticipantViewModel(application: Application): AndroidViewModel(applicati
     var notParticipants: LiveData<MutableList<Student>>
     val studentRepository: StudentRepository
     private val participantRepository: ParticipantRepository
+    var participants: LiveData<MutableList<Student>>
 
     init{
         notParticipants = AssistentDatabase.getDatabase(application).studentDao().getNotParticipants(DataSource.chosenCourseId)
         studentRepository = StudentRepository(AssistentDatabase.getDatabase(application).studentDao())
         participantRepository = ParticipantRepository(AssistentDatabase.getDatabase(application).participantDao())
+        participants = AssistentDatabase.getDatabase(application).studentDao().getParticipants(DataSource.chosenCourseId)
     }
 
     fun addParticipant(studentId: Int, courseId: Int)

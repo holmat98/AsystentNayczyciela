@@ -8,5 +8,6 @@ class DataSource {
         var chosenCourseId: Int = 0
         var newParticipantId: Int = 0
         var student: String = ""
+        var chosenParticipantId: Int = 0
     }
 }

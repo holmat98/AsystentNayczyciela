@@ -52,6 +52,7 @@ class FragmentTeachersCourses : Fragment() {
         // Inflate the layout for this fragment
 
         viewModel = ViewModelProvider(requireActivity()).get(CourseViewModel::class.java)
+        viewModel.teachersCourses = viewModel.courseRepository.getTeachersCourses(DataSource.chosenTeacherId)
         myLayoutManager = LinearLayoutManager(context)
         myAdapter = AdapterCourses(viewModel.teachersCourses)
 
