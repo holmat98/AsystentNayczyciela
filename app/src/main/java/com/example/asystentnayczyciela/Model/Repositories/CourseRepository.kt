@@ -18,6 +18,10 @@ class CourseRepository(val courseDao: CourseDao) {
         return courseDao.teachersCourses(teacherId)
     }
 
+    fun getStudentsCourses(studentId: Int) : LiveData<MutableList<Course>>
+    {
+        return courseDao.studentsCourses(studentId)
+    }
 
     suspend fun delete(course: Course)=courseDao.delete(course)
 }

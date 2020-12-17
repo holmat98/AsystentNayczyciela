@@ -76,6 +76,9 @@
         <action
             android:id="@+id/action_fragmentChoosenStudent_to_fragmentEditStudent"
             app:destination="@id/fragmentEditStudent" />
+        <action
+            android:id="@+id/action_fragmentChoosenStudent_to_fragmentStudentCourses"
+            app:destination="@id/fragmentStudentCourses" />
     </fragment>
     <fragment
         android:id="@+id/choosenTeacher"
@@ -190,5 +193,26 @@
         <action
             android:id="@+id/action_fragmentReport_to_choosenTeacher"
             app:destination="@id/choosenTeacher" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStudentsGrades"
+        android:name="com.example.asystentnayczyciela.View.FragmentStudentsGrades"
+        android:label="fragment_students_grades"
+        tools:layout="@layout/fragment_students_grades" >
+        <action
+            android:id="@+id/action_fragmentStudentsGrades_to_fragmentStudentCourses"
+            app:destination="@id/fragmentStudentCourses" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentStudentCourses"
+        android:name="com.example.asystentnayczyciela.View.FragmentStudentCourses"
+        android:label="fragment_student_courses"
+        tools:layout="@layout/fragment_student_courses" >
+        <action
+            android:id="@+id/action_fragmentStudentCourses_to_fragmentChoosenStudent"
+            app:destination="@id/fragmentChoosenStudent" />
+        <action
+            android:id="@+id/action_fragmentStudentCourses_to_fragmentStudentsGrades"
+            app:destination="@id/fragmentStudentsGrades" />
     </fragment>
 </navigation>

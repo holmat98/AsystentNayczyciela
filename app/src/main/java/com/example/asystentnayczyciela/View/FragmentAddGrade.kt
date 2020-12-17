@@ -74,10 +74,10 @@ class FragmentAddGrade : Fragment(), AdapterView.OnItemSelectedListener {
 
         addGradeBtn.setOnClickListener {
             var description: String = gradeDescription.getText().toString()
-            Log.d("OCENA", calendar.time.toString() + " " + selectedMark + " " + DataSource.chosenCourseId.toString() + " " + DataSource.chosenParticipantId)
+            Log.d("OCENA", Date().toString() + " " + selectedMark + " " + description + " " + DataSource.chosenCourseId.toString() + " " + DataSource.chosenParticipantId)
             if(!"".equals(description) && !"".equals(selectedMark))
             {
-                viewModel.addGrade(DataSource.chosenParticipantId, description, DataSource.chosenCourseId, selectedMark, calendar.time)
+                viewModel.addGrade(DataSource.chosenParticipantId, description, DataSource.chosenCourseId, selectedMark, Date())
             }
         }
     }

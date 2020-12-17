@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import java.util.*
 
 @Dao
 interface GradeDao {
@@ -16,4 +17,7 @@ interface GradeDao {
 
     @Query("select * from grade_table")
     fun allGrades(): LiveData<MutableList<Grade>>
+
+    @Query("select * from grade_table where idStudent = :studentId")
+    fun getStudentsGrades(studentId: Int) : LiveData<MutableList<Grade>>
 }

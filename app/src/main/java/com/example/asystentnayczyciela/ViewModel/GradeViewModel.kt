@@ -18,10 +18,12 @@ class GradeViewModel(application: Application): AndroidViewModel(application) {
 
     val grades: LiveData<MutableList<Grade>>
     val gradeRepository: GradeRepository
+    var studentsGrades: LiveData<MutableList<Grade>>
 
     init{
         grades = AssistentDatabase.getDatabase(application).gradeDao().allGrades()
         gradeRepository = GradeRepository(AssistentDatabase.getDatabase(application).gradeDao())
+        studentsGrades = AssistentDatabase.getDatabase(application).gradeDao().getStudentsGrades(DataSource.chosenStudentId)
     }
 
     fun addGrade(studentId: Int, description: String, courseId: Int, grade: String, date: Date)

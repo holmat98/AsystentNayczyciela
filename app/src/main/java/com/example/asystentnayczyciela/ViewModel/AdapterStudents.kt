@@ -34,6 +34,7 @@ class AdapterStudents(var studentList: LiveData<MutableList<Student>>): Recycler
         buttonSV.setOnClickListener{
             view -> view.findNavController().navigate(R.id.action_framgentChooseStudent_to_fragmentChoosenStudent)
             DataSource.chosenStudentIndex = position
+            DataSource.chosenStudentId = studentList.value?.get(position)?.id ?: 0
         }
     }
 

@@ -17,11 +17,13 @@ class CourseViewModel(application: Application): AndroidViewModel(application) {
     val courses: LiveData<MutableList<Course>>
     val courseRepository: CourseRepository
     var teachersCourses: LiveData<MutableList<Course>>
+    var studentsCourses: LiveData<MutableList<Course>>
 
     init{
         courses = AssistentDatabase.getDatabase(application).courseDao().allCourses()
         courseRepository = CourseRepository(AssistentDatabase.getDatabase(application).courseDao())
         teachersCourses = AssistentDatabase.getDatabase(application).courseDao().teachersCourses(DataSource.chosenTeacherId)
+        studentsCourses = AssistentDatabase.getDatabase(application).courseDao().studentsCourses(DataSource.chosenStudentId)
     }
 
     fun addCourse(name: String, teacherId: Int)
