@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toTopOf="@id/addGradeBtn"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:lines="1"
+        android:lines="3"
         android:gravity="top|left"
         android:maxLines="3"
         />

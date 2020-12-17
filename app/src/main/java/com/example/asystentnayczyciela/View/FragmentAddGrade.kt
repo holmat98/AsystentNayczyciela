@@ -1,5 +1,6 @@
 package com.example.asystentnayczyciela.View
 
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import com.example.asystentnayczyciela.Model.DataSource
 import com.example.asystentnayczyciela.R
 import com.example.asystentnayczyciela.ViewModel.GradeViewModel
 import kotlinx.android.synthetic.main.fragment_add_grade.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -66,6 +70,7 @@ class FragmentAddGrade : Fragment(), AdapterView.OnItemSelectedListener {
         return inflater.inflate(R.layout.fragment_add_grade, container, false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -74,10 +79,12 @@ class FragmentAddGrade : Fragment(), AdapterView.OnItemSelectedListener {
 
         addGradeBtn.setOnClickListener {
             var description: String = gradeDescription.getText().toString()
-            Log.d("OCENA", Date().toString() + " " + selectedMark + " " + description + " " + DataSource.chosenCourseId.toString() + " " + DataSource.chosenParticipantId)
+            val format = DateTimeFormatter.ofPattern("yyy/MM/dd")
+            val date = LocalDateTime.now().format(format)
+            //Log.d("OCENA", date + " " + selectedMark + " " + description + " " + DataSource.chosenCourseId.toString() + " " + DataSource.chosenParticipantId)
             if(!"".equals(description) && !"".equals(selectedMark))
             {
-                viewModel.addGrade(DataSource.chosenParticipantId, description, DataSource.chosenCourseId, selectedMark, Date())
+                viewModel.addGrade(DataSource.chosenParticipantId, description, DataSource.chosenCourseId, selectedMark, date)
             }
         }
     }

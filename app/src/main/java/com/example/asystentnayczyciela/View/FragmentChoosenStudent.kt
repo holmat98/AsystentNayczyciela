@@ -53,7 +53,11 @@ class FragmentChoosenStudent : Fragment() {
         witajSTV.text = "Witaj " + viewModel.students.value?.get(DataSource.chosenStudentIndex)?.name + " " + viewModel.students.value?.get(DataSource.chosenStudentIndex)?.lastName
 
         studentsCoursesBtn.setOnClickListener {
-            view -> view.findNavController().navigate(R.id.action_fragmentChoosenStudent_to_fragmentStudentCourses)
+            view -> view.findNavController().navigate(R.id.action_fragmentChoosenStudent_to_fragmentStudentsCourses)
+        }
+
+        sTestsBtn.setOnClickListener {
+            view -> view.findNavController().navigate(R.id.action_fragmentChoosenStudent_to_fragmentStudentsTest)
         }
 
         deleteStudentButton.setOnClickListener{
@@ -63,10 +67,6 @@ class FragmentChoosenStudent : Fragment() {
                     it
                 )
             }
-        }
-
-        editStudentButton2.setOnClickListener{
-            view -> view.findNavController().navigate(R.id.action_fragmentChoosenStudent_to_fragmentEditStudent)
         }
     }
 

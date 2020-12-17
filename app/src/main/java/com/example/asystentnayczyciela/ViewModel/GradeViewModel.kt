@@ -19,14 +19,16 @@ class GradeViewModel(application: Application): AndroidViewModel(application) {
     val grades: LiveData<MutableList<Grade>>
     val gradeRepository: GradeRepository
     var studentsGrades: LiveData<MutableList<Grade>>
+    var reportGrades: LiveData<MutableList<Grade>>
 
     init{
         grades = AssistentDatabase.getDatabase(application).gradeDao().allGrades()
         gradeRepository = GradeRepository(AssistentDatabase.getDatabase(application).gradeDao())
-        studentsGrades = AssistentDatabase.getDatabase(application).gradeDao().getStudentsGrades(DataSource.chosenStudentId)
+        studentsGrades = AssistentDatabase.getDatabase(application).gradeDao().getStudentsGrades(DataSource.chosenStudentId, DataSource.chosenStudentsCourseId)
+        reportGrades = AssistentDatabase.getDatabase(application).gradeDao().allGrades()
     }
 
-    fun addGrade(studentId: Int, description: String, courseId: Int, grade: String, date: Date)
+    fun addGrade(studentId: Int, description: String, courseId: Int, grade: String, date: String)
     {
         viewModelScope.launch {
             gradeRepository.add(Grade(id = 0, idCourse = courseId, idStudent = studentId, gradeDescription = description, gradeValue = grade, date = date))

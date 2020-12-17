@@ -6,11 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.asystentnayczyciela.Model.DataSource
 import com.example.asystentnayczyciela.R
-import com.example.asystentnayczyciela.ViewModel.StudentViewModel
-import kotlinx.android.synthetic.main.fragment_add_student.*
-import kotlinx.android.synthetic.main.fragment_edit_student.*
+import com.example.asystentnayczyciela.ViewModel.AdapterTeachers
+import com.example.asystentnayczyciela.ViewModel.AdapterTest
+import com.example.asystentnayczyciela.ViewModel.TeacherViewModel
+import com.example.asystentnayczyciela.ViewModel.TestViewModel
+import kotlinx.android.synthetic.main.fragment_choose_teacher.*
+import kotlinx.android.synthetic.main.fragment_teachers_test.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -19,15 +24,18 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragmentEditStudent.newInstance] factory method to
+ * Use the [FragmentTeachersTest.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentEditStudent : Fragment() {
+class FragmentTeachersTest : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    lateinit var viewModel: StudentViewModel
+    private lateinit var viewModel: TestViewModel
+    private lateinit var myAdapter: AdapterTest
+    private lateinit var myLayoutManager: LinearLayoutManager
+    private lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,33 +51,22 @@ class FragmentEditStudent : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        viewModel = ViewModelProvider(requireActivity()).get(StudentViewModel::class.java)
+        myLayoutManager = LinearLayoutManager(context)
+        viewModel = ViewModelProvider(requireActivity()).get(TestViewModel::class.java)
+        viewModel.teachersTest = viewModel.testRepository.getTeachersTest(DataSource.chosenTeacherId)
+        myAdapter = AdapterTest(viewModel.teachersTest)
 
-        return inflater.inflate(R.layout.fragment_edit_student, container, false)
+        viewModel.teachersTest.observe(viewLifecycleOwner, androidx.lifecycle.Observer { myAdapter.notifyDataSetChanged() })
+
+        return inflater.inflate(R.layout.fragment_teachers_test, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        newStudentName2.setText(viewModel.students.value?.get(DataSource.chosenStudentIndex)?.name)
-        newStudentLastName2.setText(viewModel.students.value?.get(DataSource.chosenStudentIndex)?.lastName)
 
-        editStudentButton.setOnClickListener{
-            var newName: String = newStudentName.getText().toString()
-            var newLastName: String = newStudentLastName2.getText().toString()
-            var id: Int? = viewModel.students.value?.get(DataSource.chosenStudentIndex)?.id
-
-            if(!newName.equals(viewModel.students.value?.get(DataSource.chosenStudentIndex)?.name) && !"".equals(newName)
-                &&
-                !newLastName.equals(viewModel.students.value?.get(DataSource.chosenStudentIndex)?.lastName) && !"".equals(newLastName)
-            ){
-                if (id != null) {
-                    viewModel.editStudent(
-                        newName = newName,
-                        newLastName = newLastName,
-                        idStudent = id
-                    )
-                }
-            }
+        recyclerView = testRecyclerView.apply {
+            this.layoutManager = myLayoutManager
+            this.adapter = myAdapter
         }
     }
 
@@ -80,12 +77,12 @@ class FragmentEditStudent : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentEditStudent.
+         * @return A new instance of fragment FragmentTeachersTest.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragmentEditStudent().apply {
+            FragmentTeachersTest().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

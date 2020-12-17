@@ -18,6 +18,9 @@ interface GradeDao {
     @Query("select * from grade_table")
     fun allGrades(): LiveData<MutableList<Grade>>
 
-    @Query("select * from grade_table where idStudent = :studentId")
-    fun getStudentsGrades(studentId: Int) : LiveData<MutableList<Grade>>
+    @Query("select * from grade_table where idStudent = :studentId and idCourse = :courseId")
+    fun getStudentsGrades(studentId: Int, courseId: Int) : LiveData<MutableList<Grade>>
+
+    @Query("select * from grade_table where date = :todaysDate and idCourse in (select id from course_table where idTeacher = :teacherId)")
+    fun report(todaysDate: String, teacherId: Int) : LiveData<MutableList<Grade>>
 }

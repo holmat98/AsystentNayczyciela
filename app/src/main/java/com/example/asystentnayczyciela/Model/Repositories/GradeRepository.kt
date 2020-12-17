@@ -13,9 +13,13 @@ class GradeRepository(val gradeDao: GradeDao) {
         gradeDao.insert(grade)
     }
 
-    fun getStudentsGrades(studentId: Int) : LiveData<MutableList<Grade>>
+    fun getStudentsGrades(studentId: Int, courseId: Int) : LiveData<MutableList<Grade>>
     {
-        return gradeDao.getStudentsGrades(studentId)
+        return gradeDao.getStudentsGrades(studentId, courseId)
+    }
+
+    fun getReport(todaysDate: String, teacherId: Int) : LiveData<MutableList<Grade>>{
+        return gradeDao.report(todaysDate, teacherId)
     }
 
     suspend fun delete(grade: Grade) = gradeDao.delete(grade)

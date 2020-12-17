@@ -25,7 +25,6 @@ class AdapterParticipants(var ParticipantsList: LiveData<MutableList<Student>>):
         var name = holder.itemView.findViewById<TextView>(R.id.participantNameTV)
         var lastName = holder.itemView.findViewById<TextView>(R.id.participantLastNameTV)
         var addGrade = holder.itemView.findViewById<Button>(R.id.addGrade)
-        var delete = holder.itemView.findViewById<Button>(R.id.deleteParticipant)
 
         name.text = ParticipantsList.value?.get(position)?.name
         lastName.text = ParticipantsList.value?.get(position)?.lastName
@@ -33,11 +32,6 @@ class AdapterParticipants(var ParticipantsList: LiveData<MutableList<Student>>):
         addGrade.setOnClickListener {
             view -> view.findNavController().navigate(R.id.action_fragmentParticipants_to_fragmentAddGrade)
             DataSource.chosenParticipantId = ParticipantsList.value?.get(position)?.id ?: 0
-        }
-
-        delete.setOnClickListener {
-            ParticipantsList.value?.removeAt(position)
-            this.notifyDataSetChanged()
         }
     }
 

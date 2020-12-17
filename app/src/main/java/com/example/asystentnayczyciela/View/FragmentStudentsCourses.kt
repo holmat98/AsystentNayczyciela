@@ -5,15 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.asystentnayczyciela.Model.DataSource
 import com.example.asystentnayczyciela.R
-import com.example.asystentnayczyciela.ViewModel.AdapterCourses
 import com.example.asystentnayczyciela.ViewModel.AdapterStudentsCourses
 import com.example.asystentnayczyciela.ViewModel.CourseViewModel
-import kotlinx.android.synthetic.main.fragment_teachers_courses.*
+import kotlinx.android.synthetic.main.fragment_students_courses.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,18 +23,18 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragmentStudentCourses.newInstance] factory method to
+ * Use the [FragmentStudentsCourses.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentStudentCourses : Fragment() {
+class FragmentStudentsCourses : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     lateinit var viewModel: CourseViewModel
-    private lateinit var myAdapter: AdapterStudentsCourses
-    private lateinit var myLayoutManager: LinearLayoutManager
-    private lateinit var recyclerView: RecyclerView
+    lateinit var myAdapter: AdapterStudentsCourses
+    lateinit var myLayoutManager: LinearLayoutManager
+    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,20 +50,20 @@ class FragmentStudentCourses : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
+        myLayoutManager = LinearLayoutManager(context)
         viewModel = ViewModelProvider(requireActivity()).get(CourseViewModel::class.java)
         viewModel.studentsCourses = viewModel.courseRepository.getStudentsCourses(DataSource.chosenStudentId)
-        myLayoutManager = LinearLayoutManager(context)
         myAdapter = AdapterStudentsCourses(viewModel.studentsCourses)
 
-        viewModel.studentsCourses.observe(viewLifecycleOwner, androidx.lifecycle.Observer{myAdapter.notifyDataSetChanged()})
+        viewModel.studentsCourses.observe(viewLifecycleOwner, Observer { myAdapter.notifyDataSetChanged() })
 
-        return inflater.inflate(R.layout.fragment_student_courses, container, false)
+        return inflater.inflate(R.layout.fragment_students_courses, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = coursesRecyclerView.apply {
+        recyclerView = scRecyclerView.apply {
             this.layoutManager = myLayoutManager
             this.adapter = myAdapter
         }
@@ -75,12 +76,12 @@ class FragmentStudentCourses : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentStudentCourses.
+         * @return A new instance of fragment FragmentStudentsCourses.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragmentStudentCourses().apply {
+            FragmentStudentsCourses().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

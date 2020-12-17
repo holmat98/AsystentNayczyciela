@@ -18,18 +18,16 @@ class AdapterGrades(var gradesList: LiveData<MutableList<Grade>>): RecyclerView.
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GradesHolder {
         val view= LayoutInflater.from(parent.context)
-            .inflate(R.layout.one_row_teachers_courses,parent,false)
+            .inflate(R.layout.one_row_grades,parent,false)
         return GradesHolder(view)
     }
 
     override fun onBindViewHolder(holder: GradesHolder, position: Int) {
-        val grade = holder.itemView.findViewById<TextView>(R.id.gradeVTV)
-        val des = holder.itemView.findViewById<TextView>(R.id.gradeDesTV)
+        var grade = holder.itemView.findViewById<TextView>(R.id.gradeVTV)
+        var description = holder.itemView.findViewById<TextView>(R.id.gradeDesTV)
 
         grade.text = gradesList.value?.get(position)?.gradeValue
-        des.text = gradesList.value?.get(position)?.gradeDescription + " " + gradesList.value?.get(position)?.date.toString()
-
-        //grade.height = des.height
+        description.text = gradesList.value?.get(position)?.gradeDescription
     }
 
     override fun getItemCount(): Int {

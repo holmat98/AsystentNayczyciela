@@ -26,7 +26,7 @@ class AdapterCourses(var coursesList: LiveData<MutableList<Course>>): RecyclerVi
         var nameTV = holder.itemView.findViewById<TextView>(R.id.courseNameTV)
         var toParticipantsbutton = holder.itemView.findViewById<Button>(R.id.goToParticipantsBtn)
         var addParticipantButton = holder.itemView.findViewById<Button>(R.id.goToAddParticipant)
-        var deleteCourse = holder.itemView.findViewById<Button>(R.id.deleteCourse)
+        var toAddTest = holder.itemView.findViewById<Button>(R.id.goToAddTest)
 
         nameTV.text = coursesList.value?.get(position)?.name
 
@@ -40,9 +40,9 @@ class AdapterCourses(var coursesList: LiveData<MutableList<Course>>): RecyclerVi
             DataSource.chosenCourseId = coursesList.value?.get(position)?.id ?: 0
         }
 
-        deleteCourse.setOnClickListener{
-            coursesList.value?.removeAt(position)
-            this.notifyDataSetChanged()
+        toAddTest.setOnClickListener{
+            view -> view.findNavController().navigate(R.id.action_fragmentTeachersCourses_to_fragmentAddTest)
+            DataSource.chosenCourseId = coursesList.value?.get(position)?.id ?: 0
         }
     }
 

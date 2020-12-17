@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.asystentnayczyciela.Model.Course
@@ -57,6 +58,7 @@ class ChoosenTeacher : Fragment() {
         addCourseBtn.setOnClickListener{view -> view.findNavController().navigate(R.id.action_choosenTeacher_to_fragmentAddCourse)}
         TeachersCourses.setOnClickListener{view -> view.findNavController().navigate(R.id.action_choosenTeacher_to_fragmentTeachersCourses)}
         GradesReport.setOnClickListener { view -> view.findNavController().navigate(R.id.action_choosenTeacher_to_fragmentReport) }
+        yoursTests.setOnClickListener { view -> view.findNavController().navigate(R.id.action_choosenTeacher_to_fragmentTeachersTest) }
 
         witajTTV.text = "Witaj " + viewModel.teachers.value?.get(com.example.asystentnayczyciela.Model.DataSource.chosenTeacherIndex)?.name + " " + viewModel.teachers.value?.get(com.example.asystentnayczyciela.Model.DataSource.chosenTeacherIndex)?.lastName
 

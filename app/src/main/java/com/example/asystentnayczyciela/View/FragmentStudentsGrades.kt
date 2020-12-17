@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@ import com.example.asystentnayczyciela.Model.DataSource
 import com.example.asystentnayczyciela.R
 import com.example.asystentnayczyciela.ViewModel.AdapterGrades
 import com.example.asystentnayczyciela.ViewModel.GradeViewModel
-import kotlinx.android.synthetic.main.fragment_participants.*
+import kotlinx.android.synthetic.main.fragment_report.*
 import kotlinx.android.synthetic.main.fragment_students_grades.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -30,10 +31,10 @@ class FragmentStudentsGrades : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private lateinit var viewModel: GradeViewModel
-    private lateinit var myAdapter: AdapterGrades
-    private lateinit var myLayoutManager: LinearLayoutManager
-    private lateinit var recyclerView: RecyclerView
+    lateinit var viewModel: GradeViewModel
+    lateinit var myLaoyoutManager: LinearLayoutManager
+    lateinit var myAdapter: AdapterGrades
+    lateinit var recyclerView: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,11 +51,11 @@ class FragmentStudentsGrades : Fragment() {
         // Inflate the layout for this fragment
 
         viewModel = ViewModelProvider(requireActivity()).get(GradeViewModel::class.java)
-        viewModel.studentsGrades = viewModel.gradeRepository.getStudentsGrades(DataSource.chosenStudentId)
-        myLayoutManager = LinearLayoutManager(context)
+        viewModel.studentsGrades = viewModel.gradeRepository.getStudentsGrades(DataSource.chosenStudentId, DataSource.chosenStudentsCourseId)
+        myLaoyoutManager = LinearLayoutManager(context)
         myAdapter = AdapterGrades(viewModel.studentsGrades)
 
-        viewModel.studentsGrades.observe(viewLifecycleOwner, androidx.lifecycle.Observer { myAdapter.notifyDataSetChanged() })
+        viewModel.studentsGrades.observe(viewLifecycleOwner, Observer { myAdapter.notifyDataSetChanged() })
 
         return inflater.inflate(R.layout.fragment_students_grades, container, false)
     }
@@ -63,7 +64,7 @@ class FragmentStudentsGrades : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = sgRecyclerView.apply {
-            this.layoutManager = myLayoutManager
+            this.layoutManager = myLaoyoutManager
             this.adapter = myAdapter
         }
     }

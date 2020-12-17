@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.FragmentStudentCourses">
+    tools:context=".View.FragmentStudentsTest">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/scRecyclerView"
+        android:id="@+id/stRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

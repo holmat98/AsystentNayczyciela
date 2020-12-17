@@ -1,23 +1,15 @@
 package com.example.asystentnayczyciela.View
 
-import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.RequiresApi
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.asystentnayczyciela.Model.DataSource
 import com.example.asystentnayczyciela.R
-import com.example.asystentnayczyciela.ViewModel.AdapterGrades
-import com.example.asystentnayczyciela.ViewModel.GradeViewModel
-import kotlinx.android.synthetic.main.fragment_report.*
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import com.example.asystentnayczyciela.ViewModel.TestViewModel
+import kotlinx.android.synthetic.main.fragment_add_test.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,18 +18,15 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragmentReport.newInstance] factory method to
+ * Use the [FragmentAddTest.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentReport : Fragment() {
+class FragmentAddTest : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
-    lateinit var viewModel: GradeViewModel
-    lateinit var myLaoyoutManager: LinearLayoutManager
-    lateinit var myAdapter: AdapterGrades
-    lateinit var recyclerView: RecyclerView
+    lateinit var viewModel: TestViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,31 +36,28 @@ class FragmentReport : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
 
-        viewModel = ViewModelProvider(requireActivity()).get(GradeViewModel::class.java)
-        val format = DateTimeFormatter.ofPattern("yyy/MM/dd")
-        val date = LocalDateTime.now().format(format)
-        viewModel.reportGrades = viewModel.gradeRepository.getReport(date, DataSource.chosenTeacherId)
-        myLaoyoutManager = LinearLayoutManager(context)
-        myAdapter = AdapterGrades(viewModel.reportGrades)
+        viewModel = ViewModelProvider(requireActivity()).get(TestViewModel::class.java)
 
-        viewModel.reportGrades.observe(viewLifecycleOwner, Observer { myAdapter.notifyDataSetChanged() })
-
-        return inflater.inflate(R.layout.fragment_report, container, false)
+        return inflater.inflate(R.layout.fragment_add_test, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        recyclerView = reportRecyclerView.apply {
-            this.layoutManager = myLaoyoutManager
-            this.adapter = myAdapter
+        addTest.setOnClickListener {
+            var data = dataET.getText().toString()
+            var opis = opisET.getText().toString()
+
+            if(!"".equals(data) && !"".equals(opis))
+            {
+                viewModel.addTest(DataSource.chosenCourseId, opis, data)
+            }
         }
     }
 
@@ -82,12 +68,12 @@ class FragmentReport : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentReport.
+         * @return A new instance of fragment FragmentAddTest.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragmentReport().apply {
+            FragmentAddTest().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

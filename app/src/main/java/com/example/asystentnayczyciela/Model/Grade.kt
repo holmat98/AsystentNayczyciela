@@ -22,6 +22,5 @@ import java.util.Date
         onDelete = CASCADE
     )
 ])
-@TypeConverters(DateConverter::class)
-data class Grade(@PrimaryKey(autoGenerate = true)val id: Int, val idStudent: Int, val idCourse: Int, var gradeValue: String, var gradeDescription: String, var date: Date) {
+data class Grade(@PrimaryKey(autoGenerate = true)val id: Int, val idStudent: Int, val idCourse: Int, var gradeValue: String, var gradeDescription: String, var date: String) {
 }
