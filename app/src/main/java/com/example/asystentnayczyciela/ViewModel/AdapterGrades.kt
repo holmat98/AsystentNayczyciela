@@ -25,9 +25,11 @@ class AdapterGrades(var gradesList: LiveData<MutableList<Grade>>): RecyclerView.
     override fun onBindViewHolder(holder: GradesHolder, position: Int) {
         var grade = holder.itemView.findViewById<TextView>(R.id.gradeVTV)
         var description = holder.itemView.findViewById<TextView>(R.id.gradeDesTV)
+        var date = holder.itemView.findViewById<TextView>(R.id.gradeDateTV)
 
         grade.text = gradesList.value?.get(position)?.gradeValue
         description.text = gradesList.value?.get(position)?.gradeDescription
+        date.text = gradesList.value?.get(position)?.date
     }
 
     override fun getItemCount(): Int {

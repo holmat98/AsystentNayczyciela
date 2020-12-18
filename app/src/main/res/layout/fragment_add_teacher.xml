@@ -26,14 +26,13 @@
         app:layout_constraintRight_toLeftOf="@id/newTeacherName"
         app:layout_constraintBottom_toTopOf="@id/textView6"
         android:text="@string/studentName"
-        android:textSize="30dp"
         />
 
     <EditText
         android:id="@+id/newTeacherName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="8"
         app:layout_constraintTop_toBottomOf="@id/addTeacherTV"
         app:layout_constraintLeft_toRightOf="@id/textView5"
         app:layout_constraintRight_toRightOf="parent"
@@ -49,14 +48,13 @@
         app:layout_constraintRight_toLeftOf="@id/newTeacherLastName"
         app:layout_constraintBottom_toTopOf="@id/addTeacherButton"
         android:text="@string/studentLastName"
-        android:textSize="30dp"
         />
 
     <EditText
         android:id="@+id/newTeacherLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
+        android:ems="8"
         app:layout_constraintTop_toBottomOf="@id/newTeacherName"
         app:layout_constraintLeft_toRightOf="@id/textView6"
         app:layout_constraintBottom_toTopOf="@id/addTeacherButton"

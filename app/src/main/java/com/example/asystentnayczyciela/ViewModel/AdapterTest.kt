@@ -1,6 +1,7 @@
 package com.example.asystentnayczyciela.ViewModel
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -43,13 +44,13 @@ class AdapterTest(var testList: LiveData<MutableList<Test>>): RecyclerView.Adapt
 
         if(testDate >= LocalDate.now())
         {
-            data.setBackgroundColor(R.color.green)
-            opis.setBackgroundColor(R.color.green)
+            data.setBackgroundColor(Color.GREEN)
+            opis.setBackgroundColor(Color.GREEN)
         }
         else
         {
-            data.setBackgroundColor(R.color.red)
-            opis.setBackgroundColor(R.color.red)
+            data.setBackgroundColor(Color.RED)
+            opis.setBackgroundColor(Color.RED)
         }
 
     }

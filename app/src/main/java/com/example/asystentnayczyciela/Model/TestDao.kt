@@ -14,9 +14,9 @@ interface TestDao {
     @Update
     suspend fun update(test: Test)
 
-    @Query("select * from test_table where idCourse in (select id from course_table where idTeacher = :teacherId)")
+    @Query("select * from test_table where idCourse in (select id from course_table where idTeacher = :teacherId) order by testDate desc")
     fun getTeachersTest(teacherId: Int) : LiveData<MutableList<Test>>
 
-    @Query("select * from test_table where idCourse in (select participant_table.idCourse from participant_table where idStudent = :studentId)")
+    @Query("select * from test_table where idCourse in (select participant_table.idCourse from participant_table where idStudent = :studentId) order by testDate desc")
     fun getTest(studentId: Int) : LiveData<MutableList<Test>>
 }

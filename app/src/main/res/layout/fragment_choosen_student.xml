@@ -36,7 +36,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/studentsCoursesBtn"
         app:layout_constraintBottom_toTopOf="@id/deleteStudentButton"
-        android:text="Nadchodzące Testy"
+        android:text="Twoje Testy"
         />
 
     <Button

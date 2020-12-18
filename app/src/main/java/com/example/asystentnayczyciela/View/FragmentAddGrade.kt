@@ -85,6 +85,7 @@ class FragmentAddGrade : Fragment(), AdapterView.OnItemSelectedListener {
             if(!"".equals(description) && !"".equals(selectedMark))
             {
                 viewModel.addGrade(DataSource.chosenParticipantId, description, DataSource.chosenCourseId, selectedMark, date)
+                gradeDescription.text.clear()
             }
         }
     }

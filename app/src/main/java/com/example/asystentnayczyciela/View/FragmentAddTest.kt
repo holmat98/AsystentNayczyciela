@@ -57,6 +57,8 @@ class FragmentAddTest : Fragment() {
             if(!"".equals(data) && !"".equals(opis))
             {
                 viewModel.addTest(DataSource.chosenCourseId, opis, data)
+                dataET.text.clear()
+                opisET.text.clear()
             }
         }
     }

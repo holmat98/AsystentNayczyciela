@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:text="Dodaj"
-        android:textSize="10dp"
+        android:textSize="7dp"
         />
 
     <Button
@@ -25,15 +25,16 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:text="Uczestnicy"
-        android:textSize="10dp"
+        android:textSize="7dp"
         />
 
     <Button
         android:id="@+id/goToAddTest"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="DT"
+        android:layout_weight="2"
+        android:text="Dodaj test"
+        android:textSize="6dp"
         />
 
 </LinearLayout>
